@@ -5,7 +5,6 @@ dotenv.config()
 
 const app = require('./config/express')
 const config = require('./config/config')
-const axios = require('axios')
 
 let server
 
@@ -17,15 +16,6 @@ if (config.mongoose.enabled) {
 
 server = app.listen(config.port, () => {
     logger.info(`Listening to port ${config.port}`)
-
-    axios.post(
-        'https://hooks.slack.com/services/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',
-        {
-            text: `*wa.arfani.my.id* is starting`,
-        }
-    )
-
-    axios.get('https://wa.arfani.my.id/instance/restore')
 })
 
 const exitHandler = () => {
